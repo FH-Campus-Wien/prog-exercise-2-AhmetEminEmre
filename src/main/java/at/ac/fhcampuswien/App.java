@@ -138,8 +138,8 @@ public class App {
         double sum = 0;
         double input;
         int count = 1;
-        int countFive = 0;
-        double countGoodInput = 0;
+        int countMarks = 0;
+        double countpos = 0;
 
         while(true)
         {
@@ -154,8 +154,8 @@ public class App {
             else if (input != 0)
             {
                 sum += input;
-                countGoodInput++;
-                if(input == 5) countFive++;
+                countpos++;
+                if(input == 5) countMarks++;
             }
             else
             {
@@ -163,9 +163,12 @@ public class App {
             }
             count++;
         }
-        if(countGoodInput == 0) countGoodInput++;
-        System.out.println("Average: " + String.format("%.2f",sum/countGoodInput));
-        System.out.println("Negative marks: " + countFive);
+        if(countpos == 0)
+        {
+            countpos++;
+        }
+        System.out.println("Average: " + String.format("%.2f",sum/countpos));
+        System.out.println("Negative marks: " + countMarks);
     }
 
     //todo Task 6
