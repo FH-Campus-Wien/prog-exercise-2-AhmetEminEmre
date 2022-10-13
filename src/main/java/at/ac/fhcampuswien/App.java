@@ -2,6 +2,8 @@ package at.ac.fhcampuswien;
 
 import java.util.Scanner;
 
+import java.io.*;
+
 public class App {
 
     //todo Task 1
@@ -30,9 +32,10 @@ public class App {
             }
             count++;
         }
-        if (b == false && erg >0)
+        if (b == false && erg > 0)
         {
             System.out.print("The largest number is ");
+            //für 2 Kommastellen
             System.out.format("%.2f", erg);
             System.out.println();
         }
@@ -47,8 +50,10 @@ public class App {
 
         if (number1 > 0)
         {
+            //rows
             for (int i = 0; i < number1; i++)
             {
+                //values
                 for (int j = 0; j <= i; j++)
                 {
                     count++;
@@ -56,7 +61,8 @@ public class App {
                 }
                 System.out.println();
             }
-        } else if (number1 <= 0)
+        }
+        else if (number1 <= 0)
         {
             System.out.println("Invalid number!");
         }
@@ -83,7 +89,46 @@ public class App {
 
     //todo Task 4
     public void printRhombus(){
-        // input your solution here
+        Scanner sc = new Scanner(System.in);
+        System.out.print("h: ");
+        int h = sc.nextInt();
+        System.out.print("c: ");
+        char c = sc.next().charAt(0);
+
+        if(h % 2 == 0)
+        {
+            System.out.println("Invalid number!");
+            return;
+        }
+
+        for(int row = 0; row < h; row++)
+        {
+            //https://stackoverflow.com/questions/18430582/making-an-ascii-rhombus-with-loops
+            // Leerzeichen von links aus
+            int p = Math.abs(h/2-row);
+            // q ist die Breite der Raute
+            int q = h - 2 * p;
+
+            // String bauen und ausgeben
+            StringBuilder line = new StringBuilder("");
+
+            for(int x = 0; x < p; x++)
+            {
+                //Leerzeichen anhaengen
+                line.append(" ");
+            }
+
+
+            for(int col = 0; col < q; col++)
+            {
+                // Alle Zeichen einer Zeile / 2 -> Mitte von der Zeile
+                // Nimmt den Betrag der einzelnen Zeichen
+                int d = Math.abs((q/2)-col);
+                char chr = (char) ((int) c - d);
+                line.append(chr);
+            }
+            System.out.println(line);
+        }
     }
 
     //todo Task 5
